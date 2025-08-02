@@ -1,6 +1,7 @@
 import React from 'react';
 
 import GuessField from '../GuessField';
+import GuessResults from '../GuessResults';
 import { sample } from '../../utils';
 import { WORDS } from '../../data';
 
@@ -10,8 +11,23 @@ const answer = sample(WORDS);
 console.info({ answer });
 
 function Game() {
+  const [guessList, setGuessList] = React.useState([]);
+
+  // Adss a new guess to the guess list.
+  function addGuessToList(guess) {
+    const newGuess = {
+      guess,
+      id: Math.random()
+    }
+    const newGuessList = [...guessList, newGuess];
+    setGuessList(newGuessList);
+  }
+
   return (
-    <GuessField />
+    <>
+      <GuessResults guessList={guessList} />
+      <GuessField addGuessToList={addGuessToList} />
+    </>
   );
 }
 

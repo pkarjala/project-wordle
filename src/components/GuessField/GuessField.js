@@ -1,24 +1,26 @@
 import React from 'react';
 
-function GuessField() {
-  const [guess, setGuess] = React.useState('');
+function GuessField({addGuessToList}) {
+const [guess, setGuess] = React.useState('');
 
   return (
     <form 
-    class="guess-input-wrapper"
-    onSubmit={(event) => {
-      // Prevent default form action
-      event.preventDefault();
-      // Verify the submitted string is exactly 5 characters
-      // We take care of this using the pattern input attribute instead
-      // if( guess.length !== 5 ) {
-      //   return;
-      // }
-      // Log out submitted value
-      console.log(guess);
-      // Clear the form
-      setGuess('');
-    }}>
+      className="guess-input-wrapper"
+      onSubmit={(event) => {
+        // Prevent default form action
+        event.preventDefault();
+        // Verify the submitted string is exactly 5 characters
+        // We take care of this using the pattern input attribute instead
+        // if( guess.length !== 5 ) {
+        //   return;
+        // }
+        // Log submitted value to console
+        console.log(guess);
+        addGuessToList(guess);
+        // Clear the form
+        setGuess('');
+      }}
+    >
       <label htmlFor="guess-field">
         Enter guess:
       </label>
