@@ -25,7 +25,7 @@ const [guess, setGuess] = React.useState('');
         Enter guess:
       </label>
       <input id="name-field"
-        maxlength="5"
+        maxLength="5"
         pattern="\w{5}"
         value={guess}
         onChange={(event) => {
