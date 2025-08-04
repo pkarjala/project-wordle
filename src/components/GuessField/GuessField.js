@@ -1,6 +1,6 @@
 import React from 'react';
 
-function GuessField({addGuessToList}) {
+function GuessField({addGuessToList, updateGameState, numOfGuessesMade, answer}) {
 const [guess, setGuess] = React.useState('');
 
   return (
@@ -17,6 +17,7 @@ const [guess, setGuess] = React.useState('');
         // Log submitted value to console
         console.log(guess);
         addGuessToList(guess);
+        updateGameState(numOfGuessesMade, answer, guess);
         // Clear the form
         setGuess('');
       }}
