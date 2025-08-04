@@ -27,7 +27,7 @@ function Game() {
 
   return (
     <>
-      <GuessResults guessList={guessList} numGuessesAllowed={NUM_OF_GUESSES_ALLOWED} />
+      <GuessResults guessList={guessList} numGuessesAllowed={NUM_OF_GUESSES_ALLOWED} answer={answer} />
       <GuessField addGuessToList={addGuessToList} />
     </>
   );

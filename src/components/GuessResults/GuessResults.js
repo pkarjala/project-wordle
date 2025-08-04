@@ -3,7 +3,7 @@ import React from 'react';
 import { range } from '../../utils';
 import Guess from '../Guess';
 
-function GuessResults({guessList, numGuessesAllowed}) {
+function GuessResults({guessList, numGuessesAllowed, answer}) {
   return (
     <div className="guess-results">
       {/* {guessList.map(({guess, id}) => (
@@ -11,7 +11,7 @@ function GuessResults({guessList, numGuessesAllowed}) {
       ))} */}
 
       {range(numGuessesAllowed).map((num) => (
-        <Guess guessList={guessList} indexOfGuess={num} />
+        <Guess guessList={guessList} indexOfGuess={num} answer={answer} key={Math.random()} />
       ))}
     </div>
   );
