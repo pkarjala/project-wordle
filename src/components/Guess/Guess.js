@@ -15,9 +15,8 @@ function Guess({guessList, indexOfGuess, answer}) {
       </p>
     );
   } else {
+    // Do we want to save this guess result in state?
     const guessResult = checkGuess(guessedWord.guess, answer);
-    console.log(guessResult);
-
     return(
       <p className="guess" key={guessedWord.id}>
         {guessResult.map((result) => (

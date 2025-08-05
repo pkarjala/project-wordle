@@ -22,9 +22,7 @@ function Game() {
       id: Math.random()
     }
     const newGuessList = [...guessList, newGuess];
-    setGuessList(newGuessList);
-    // Post setting action here to update game state to prevent further guesses?
-    
+    setGuessList(newGuessList);    
   }
 
   // Updates the state of the game by checking if a winning word was entered.
@@ -33,13 +31,12 @@ function Game() {
     setNumOfGuessesMade(newNumOfGuesses);
     if( answer === guess) {
       // We have a winner!
-      // console.log("Winner winner chicken dinner");
       return 1;
     } else if( newNumOfGuesses === NUM_OF_GUESSES_ALLOWED ) {
       // Check if we've exceeded the number of guesses, and set lose state.
-      // console.log("Wah Wah Wah, you lose!");
       return 2;
     } else {
+      // Continue the game for additional guesses.
       return 0;
     }
   }

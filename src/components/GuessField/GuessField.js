@@ -6,7 +6,6 @@ function GuessField({addGuessToList, updateGameState, numOfGuessesMade, answer})
   const [guess, setGuess] = React.useState('');
   const [winLoseClass, setWinLoseClass] = React.useState('');
   const [deactivateInput, setDeactivateInput] = React.useState('');
-  // const [gameOver, setGameOver] = React.useState(false);
   const [winLoseBlockDisplayState, setWinLoseBlockDisplayState] = React.useState("none");
   const [gameResult, setGameResult] = React.useState('');
   
@@ -30,15 +29,14 @@ function GuessField({addGuessToList, updateGameState, numOfGuessesMade, answer})
     <form 
       className="guess-input-wrapper"
       onSubmit={(event) => {
-        // Prevent default form action
+        // Prevent default form action.
         event.preventDefault();
-        // Log submitted value to console
-        // console.log(guess);
+        // Add the submitted guess to the list of guesses.
         addGuessToList(guess);
         // Check and update the game result.
         let newGameResult = updateGameState(numOfGuessesMade, answer, guess);
         setGameResult(newGameResult);
-        // If the newGameResult bit is 
+        // If the newGameResult value is not zero, we have a win or lose state.
         if ( newGameResult !== 0 ) {
           processWinLoseResult(newGameResult);
         }
@@ -58,7 +56,7 @@ function GuessField({addGuessToList, updateGameState, numOfGuessesMade, answer})
         disabled={deactivateInput}
         value={guess}
         onChange={(event) => {
-          // Need to set content to uppercase only
+          // Need to set content to uppercase only.
           setGuess(event.target.value.toUpperCase());
         }}
       />

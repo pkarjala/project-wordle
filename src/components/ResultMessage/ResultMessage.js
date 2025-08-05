@@ -7,7 +7,7 @@ function ResultMessage({gameResult, guessCount, answer}) {
         <strong>Congratulations!</strong> Got it in <strong>{guessCount} guesses</strong>.
       </p>
     );
-  } else if (gameResult == 2) {
+  } else if (gameResult === 2) {
     return (
       <p>
         Sorry, the correct answer is <strong>{answer}</strong>.
