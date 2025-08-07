@@ -1,7 +1,7 @@
 import React from 'react';
 
-function GuessInput() {
-  const [guess, setGuess] = React.useState('');
+function GuessInput({handleSubmitGuess}) {
+  const [tentativeGuess, setTentativeGuess] = React.useState('');
 
   // Process submission of the form.
   function handleSubmit(event) {
@@ -9,9 +9,11 @@ function GuessInput() {
     event.preventDefault();
     // NOTE:  Logging with {} instead of the raw variable logs out the
     // object for easier visual parsing.
-    console.log({guess});
+    // console.log({tentativeGuess});
+    // Add our guess to the array guesses.
+    handleSubmitGuess(tentativeGuess);
     // Reset the guess field value.
-    setGuess('');
+    setTentativeGuess('');
   }
 
   return (
@@ -25,10 +27,10 @@ function GuessInput() {
         maxLength={5}
         pattern="[a-zA-Z]{5}"
         title="5 letter word"
-        value={guess}
+        value={tentativeGuess}
         onChange={(event) => {
           const nextGuess = event.target.value.toUpperCase();
-          setGuess(nextGuess);
+          setTentativeGuess(nextGuess);
         }}
       />
     </form>
