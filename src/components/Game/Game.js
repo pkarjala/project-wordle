@@ -3,11 +3,13 @@ import React from 'react';
 import { sample } from '../../utils';
 import { WORDS } from '../../data';
 import { NUM_OF_GUESSES_ALLOWED } from '../../constants';
+import { checkGuess } from '../../game-helpers';
 
 import GuessInput from '../GuessInput';
 import GuessResults from '../GuessResults';
 import WonBanner from '../WonBanner';
 import LostBanner from '../LostBanner';
+import Keyboard from '../Keyboard';
 
 function Game() {
   // Store the current answer
@@ -40,6 +42,11 @@ function Game() {
     setGameStatus('running');
   }
 
+  // Keep track of the valid guesses.
+  const validatedGuesses = guesses.map((guess) =>
+    checkGuess(guess, answer)
+  );
+
   return (
     <>
       <GuessResults guesses={guesses} answer={answer} />
@@ -47,6 +54,7 @@ function Game() {
         gameStatus={gameStatus} 
         handleSubmitGuess={handleSubmitGuess}
       />
+      <Keyboard validatedGuesses={validatedGuesses} />
       {gameStatus === 'won' && <WonBanner numOfGuesses={guesses.length} restartGame={restartGame} />}
       {gameStatus === 'lost' && <LostBanner answer={answer} restartGame={restartGame} />}
     </>
